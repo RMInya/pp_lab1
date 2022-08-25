@@ -63,9 +63,10 @@ public class App {
             obj.TriangleNum[k] = ((count * (count + 1)) / 2);
             count++;
         }
-        // System.out.print(System.lineSeparator() + System.lineSeparator());
+       
 
-        // // вивід трикутних чисел
+        // // вивід трикутних чисел 
+        // System.out.print(System.lineSeparator() + System.lineSeparator());
         // System.out.print(ANSI_GREEN + "Triangle Numbers: " + ANSI_RESET);
         // for (int k = 0; k < 300; k++) {
         // System.out.print(obj.TriangleNum[k] + " ");
