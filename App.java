@@ -40,8 +40,6 @@ public class App {
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the length of lucas series:");
         obj.len = in.nextInt();
-        // int[] LucasNum = new int[obj.len];
-        // int[] TriangleNum = new int[obj.len];
         int j = 0;
         int count = 2;
         // масив чисел Люка
