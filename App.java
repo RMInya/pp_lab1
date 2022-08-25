@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class App {
-    int a = 2, b = 1, c, i;
+    int a = 2, b = 1, c, i, num;
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -53,5 +53,19 @@ public class App {
                 System.out.println("Lucas " + LucasNum[k] + " != Tringle " + TriangleNum[k]);
             }
         }
+        int number = 1;
+        System.out.print(System.lineSeparator());
+        while(number != 0) {   
+        System.out.print(System.lineSeparator());
+        Scanner nu = new Scanner(System.in);  
+        System.out.println("Enter queue of Lucas Number you want to find: (0 to stop)");
+        number = nu.nextInt();
+            for (int k = 0; k < len + 1; k++) {
+
+                if (k == number) {
+                    System.out.println("You found " + LucasNum[k-1]);
+                }
+            }
+        } 
     }
 }
