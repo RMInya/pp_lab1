@@ -3,7 +3,7 @@ import java.util.*;
 public class App {
     int a = 2, b = 1, c, i, len;
     int[] LucasNum = new int[100];
-    int[] TriangleNum = new int[100];
+    int[] TriangleNum = new int[300];
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
@@ -25,11 +25,13 @@ public class App {
     }
 
     public static void compare(int[] LucasNum, int[] TriangleNum, int len) {
-        for (int k = 0; k < len; k++) {
-            if (LucasNum[k] == TriangleNum[k]) {
-                System.out.println(ANSI_RED + "Lucas " + LucasNum[k] + " = Tringle " + TriangleNum[k] + ANSI_RESET);
-            } else {
-                System.out.println("Lucas " + LucasNum[k] + " != Tringle " + TriangleNum[k]);
+        for (int v = 0; v < 300; v++) {
+            int local = 0;
+            local = TriangleNum[v];
+            for (int k = 0; k < len; k++) {
+                if (LucasNum[k] == local) {
+                    System.out.println(ANSI_RED + "Lucas " + LucasNum[k] + " = Triangle " + local + ANSI_RESET);
+                }
             }
         }
     }
@@ -57,17 +59,17 @@ public class App {
             System.out.print(obj.LucasNum[k] + " ");
         }
         // масив трикутних чисел
-        for (int k = 0; k < obj.len; k++) {
+        for (int k = 0; k < 300; k++) {
             obj.TriangleNum[k] = ((count * (count + 1)) / 2);
             count++;
         }
-        System.out.print(System.lineSeparator() + System.lineSeparator());
-        System.out.print(ANSI_GREEN + "Triangle Numbers: " + ANSI_RESET);
+        // System.out.print(System.lineSeparator() + System.lineSeparator());
 
-        // вивід трикутних чисел
-        for (int k = 0; k < obj.len; k++) {
-            System.out.print(obj.TriangleNum[k] + " ");
-        }
+        // // вивід трикутних чисел
+        // System.out.print(ANSI_GREEN + "Triangle Numbers: " + ANSI_RESET);
+        // for (int k = 0; k < 300; k++) {
+        // System.out.print(obj.TriangleNum[k] + " ");
+        // }
         System.out.print(System.lineSeparator() + System.lineSeparator());
 
         // Числа Люка які = трикутним числам
