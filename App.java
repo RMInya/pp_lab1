@@ -1,82 +1,86 @@
 import java.util.*;
 
 public class App {
-    int a = 2, b = 1, c, i, len;
-    int[] LucasNum = new int[100];
-    int[] TriangleNum = new int[300];
+    int a, b, c, i;
+    int[] lucasNum;
+
+    public App(int len) {
+        this.a = 2;
+        this.b = 1;
+        lucasNum = new int[len];
+    }
+
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
-    public static void search(int[] LucasNum, int len) {
+    public static void search(int[] lucasNum, int length) {
         int number = 1;
         while (number != 0) {
-            System.out.print(System.lineSeparator());
+            System.out.println();
             Scanner nu = new Scanner(System.in);
             System.out.println("Enter queue of Lucas Number you want to find: (0 to stop)");
             number = nu.nextInt();
-            for (int k = 0; k < len + 1; k++) {
+            for (int k = 0; k < length + 1; k++) {
 
                 if (k == number) {
-                    System.out.println("You found " + LucasNum[k - 1]);
+                    System.out.println(number + " Lucas Number is " + ANSI_GREEN + lucasNum[k - 1] + ANSI_RESET);
                 }
             }
         }
     }
 
-    public static void compare(int[] LucasNum, int[] TriangleNum, int len) {
-        for (int v = 0; v < 300; v++) {
-            int local = 0;
-            local = TriangleNum[v];
-            for (int k = 0; k < len; k++) {
-                if (LucasNum[k] == local) {
-                    System.out.println(ANSI_RED + "Lucas " + LucasNum[k] + " = Triangle " + local + ANSI_RESET);
+    public static void check(int[] lucasNum, int length) {
+
+        for (int i = 0; i < length; i++) {
+            int temp = 0;
+            int sum = 0;
+            temp = lucasNum[i];
+            for (int n = 1; sum <= temp; n++) {
+                int x = 0;
+                sum += n;
+                if (sum == temp)
+                    x = 1;
+                if (x == 1) {
+                    System.out.print(ANSI_RED + "Lucas " + lucasNum[i] + " is triangle" + ANSI_RESET);
+                    System.out.println();
                 }
             }
         }
     }
 
-    public static void main(String[] args) {
-        App obj = new App();
-        // змінні і масиви
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the length of lucas series:");
-        obj.len = in.nextInt();
+    public static int lucasInit(int[] lucasNum, int length) {
         int j = 0;
-        int count = 2;
-        // масив чисел Люка
-        for (obj.i = 1; obj.i <= obj.len; obj.i++) {
+        App obj = new App(length);
+        for (obj.i = 1; obj.i <= length; obj.i++) {
             obj.c = obj.a + obj.b;
-            obj.LucasNum[j] = obj.c;
+            lucasNum[j] = obj.c;
             obj.a = obj.b;
             obj.b = obj.c;
             j++;
         }
-        // вивід чисел Люка
-        System.out.print(System.lineSeparator());
+        return 0;
+    }
+
+    public static void out(int[] lucasNum, int length) {
         System.out.print(ANSI_GREEN + "Lucas Numbers: " + ANSI_RESET);
-        for (int k = 0; k < obj.len; k++) {
-            System.out.print(obj.LucasNum[k] + " ");
+        for (int k = 0; k < length; k++) {
+            System.out.print(lucasNum[k] + " ");
         }
-        // масив трикутних чисел
-        for (int k = 0; k < 300; k++) {
-            obj.TriangleNum[k] = ((count * (count + 1)) / 2);
-            count++;
-        }
-       
+    }
 
-        // // вивід трикутних чисел 
-        // System.out.print(System.lineSeparator() + System.lineSeparator());
-        // System.out.print(ANSI_GREEN + "Triangle Numbers: " + ANSI_RESET);
-        // for (int k = 0; k < 300; k++) {
-        // System.out.print(obj.TriangleNum[k] + " ");
-        // }
-        System.out.print(System.lineSeparator() + System.lineSeparator());
-
-        // Числа Люка які = трикутним числам
-        compare(obj.LucasNum, obj.TriangleNum, obj.len);
-        // пошук чисел люка
-        System.out.print(System.lineSeparator());
-        search(obj.LucasNum, obj.len);
+    public static void main(String[] args) {
+        int length;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the length of lucas series:");
+        length = in.nextInt();
+        App obj = new App(length);
+        lucasInit(obj.lucasNum, length);
+        System.out.println();
+        out(obj.lucasNum, length);
+        System.out.println();
+        check(obj.lucasNum, length);
+        System.out.println();
+        search(obj.lucasNum, length);
     }
 }
