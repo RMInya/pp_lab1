@@ -1,20 +1,20 @@
 import java.util.*;
 
 public class App {
-    int a, b, c, i;
+    int a, b, c, i, length; 
     int[] lucasNum;
-
-    public App(int len) {
+    
+    public App(int length) {
         this.a = 2;
         this.b = 1;
-        lucasNum = new int[len];
+        lucasNum = new int[length];
     }
 
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
-    public static void search(int[] lucasNum, int length) {
+    public void search(int[] lucasNum) {
         int number = 1;
         while (number != 0) {
             System.out.println();
@@ -30,7 +30,7 @@ public class App {
         }
     }
 
-    public static void check(int[] lucasNum, int length) {
+    public void check(int[] lucasNum) {
 
         for (int i = 0; i < length; i++) {
             int temp = 0;
@@ -49,7 +49,7 @@ public class App {
         }
     }
 
-    public static int lucasInit(int[] lucasNum, int length) {
+    public int lucasInit(int[] lucasNum) {
         int j = 0;
         App obj = new App(length);
         for (obj.i = 1; obj.i <= length; obj.i++) {
@@ -62,7 +62,7 @@ public class App {
         return 0;
     }
 
-    public static void out(int[] lucasNum, int length) {
+    public void out(int[] lucasNum) {
         System.out.print(ANSI_GREEN + "Lucas Numbers: " + ANSI_RESET);
         for (int k = 0; k < length; k++) {
             System.out.print(lucasNum[k] + " ");
@@ -70,17 +70,18 @@ public class App {
     }
 
     public static void main(String[] args) {
-        int length;
+        int len;
         Scanner in = new Scanner(System.in);
         System.out.println("Enter the length of lucas series:");
-        length = in.nextInt();
-        App obj = new App(length);
-        lucasInit(obj.lucasNum, length);
+        len = in.nextInt();
+        App obj = new App(len);
+        obj.length = len;
+        obj.lucasInit(obj.lucasNum);
         System.out.println();
-        out(obj.lucasNum, length);
+        obj.out(obj.lucasNum);
         System.out.println();
-        check(obj.lucasNum, length);
+        obj.check(obj.lucasNum);
         System.out.println();
-        search(obj.lucasNum, length);
+        obj.search(obj.lucasNum);
     }
 }
