@@ -1,9 +1,9 @@
 import java.util.*;
 
 public class App {
-    int a, b, c, i, length; 
+    int a, b, c, i, length;
     int[] lucasNum;
-    
+
     public App(int length) {
         this.a = 2;
         this.b = 1;
@@ -14,7 +14,7 @@ public class App {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
 
-    public void search(int[] lucasNum) {
+    public void search() {
         int number = 1;
         while (number != 0) {
             System.out.println();
@@ -30,7 +30,7 @@ public class App {
         }
     }
 
-    public void check(int[] lucasNum) {
+    public void check() {
 
         for (int i = 0; i < length; i++) {
             int temp = 0;
@@ -49,7 +49,7 @@ public class App {
         }
     }
 
-    public int lucasInit(int[] lucasNum) {
+    public int lucasInit() {
         int j = 0;
         App obj = new App(length);
         for (obj.i = 1; obj.i <= length; obj.i++) {
@@ -62,7 +62,7 @@ public class App {
         return 0;
     }
 
-    public void out(int[] lucasNum) {
+    public void out() {
         System.out.print(ANSI_GREEN + "Lucas Numbers: " + ANSI_RESET);
         for (int k = 0; k < length; k++) {
             System.out.print(lucasNum[k] + " ");
@@ -76,12 +76,12 @@ public class App {
         len = in.nextInt();
         App obj = new App(len);
         obj.length = len;
-        obj.lucasInit(obj.lucasNum);
+        obj.lucasInit();
         System.out.println();
-        obj.out(obj.lucasNum);
+        obj.out();
         System.out.println();
-        obj.check(obj.lucasNum);
+        obj.check();
         System.out.println();
-        obj.search(obj.lucasNum);
+        obj.search();
     }
 }
